@@ -1,12 +1,17 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-
     width: 100%;
-    height:100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+    @media (min-width: 1080px) {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
 `
 
 export const LeftSide = styled.section`
@@ -15,6 +20,11 @@ export const LeftSide = styled.section`
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
+
+    @media (min-width: 1080px) {
+      height: 600px;  
+      width: 50%;
+    }
 `
 
 export const Title = styled.div`
@@ -26,6 +36,12 @@ export const Title = styled.div`
         color: var(--white); 
         font-size: 25px;
         max-width: 220px;
+    }
+
+    @media (min-width: 1080px) {  
+      width: 500px;
+      
+      > h3 { max-width: 300px; }
     }
 `
 
@@ -39,6 +55,10 @@ export const ListSubject = styled.ul`
     ::-webkit-scrollbar {
         display: none;
     }   
+
+    @media (min-width: 1080px) {
+      width: 350px;
+    }
 `
 
 export const Subjects = styled.li`
@@ -67,7 +87,7 @@ export const Subjects = styled.li`
         }   
 
         & > span {
-            padding: 5px 10px 0 0;
+            padding: 15px 10px 0 0;
             font-size: 15px;
             text-align: end;
             color: var(--font-dark);
@@ -95,14 +115,25 @@ export const Subjects = styled.li`
         }   
     }
 
-
 `
 
 export const RightSide = styled.section`
     display: none;
+    
+    @media (min-width: 1080px) {
+      width: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 `
 
 export const WelcomeImage = styled.img`
-    height: 100px;
+    height: 540px;
+    
+    @media (max-width: 1800px) {
+      height: 400px;
+    }
+    
 
 `
