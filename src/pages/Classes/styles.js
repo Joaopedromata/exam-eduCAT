@@ -22,8 +22,8 @@ export const LeftSide = styled.section`
     flex-direction: column;
 
     @media (min-width: 1080px) {
-      height: 600px;  
-      width: 50%;
+        height: 600px;  
+        width: 50%;
     }
 `
 
