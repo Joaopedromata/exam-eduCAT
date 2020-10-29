@@ -44,12 +44,10 @@ export const InputGroup = styled.div`
     }
 `
 
-export const SearchButton = styled.button`
+export const SearchGroup = styled.div`
     height: 40px;
     width: 40px;
     font-size: 15px;
-    background: var(--secondary);
-    border-radius: 0 8px 8px 0;
     position: absolute;
     bottom: 0;
     right:0;
@@ -57,15 +55,10 @@ export const SearchButton = styled.button`
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: filter 300ms;
-
-    &:hover {
-        filter:brightness(90%);
-    }
 `
 
 export const IconSearch = styled(FiSearch)`
-    color: var(--white);
+    color: var(--secondary);
     height: 20px;
     width: 20px;
 `
@@ -77,7 +70,8 @@ export const ConfirmButton = styled.button`
     border-radius: 8px;
     margin-left: 10px;
     flex-shrink: 0;
-
+    cursor: pointer;
+    
     display: flex;
     align-items: center;
     justify-content: center;
@@ -144,6 +138,22 @@ export const ListStudent = styled.ul`
     ::-webkit-scrollbar {
         display: none;
     } 
+
+    @media (min-width: 1080px) {
+        ::-webkit-scrollbar {
+            display: unset;
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: var(--dark-gray);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: var(--light-gray);
+        }
+    }
 `
 
 export const Card = styled.li`

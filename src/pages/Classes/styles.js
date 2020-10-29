@@ -57,7 +57,21 @@ export const ListSubject = styled.ul`
     }   
 
     @media (min-width: 1080px) {
-      width: 350px;
+        ::-webkit-scrollbar {
+            display: unset;
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: var(--dark-gray);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: var(--light-gray);
+        }
+
+        width: 350px;
     }
 `
 

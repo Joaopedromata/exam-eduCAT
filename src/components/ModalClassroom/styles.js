@@ -10,6 +10,7 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 `
 
 export const Wrapper = styled.section`
@@ -21,6 +22,7 @@ export const Wrapper = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
+    cursor: auto;
 
     @media (min-width: 1080px) {
         width: 1000px;
@@ -64,6 +66,7 @@ export const YesOrNo = styled.div`
 export const ButtonYes = styled.button`
     height: 35px;
     width: 60px;
+    cursor: pointer;
 
     background: var(--secondary);
     border-radius: 8px;
@@ -85,6 +88,7 @@ export const ButtonYes = styled.button`
 export const ButtonNo = styled.button`
     height: 35px;
     width: 60px;
+    cursor: pointer;
 
     background: var(--primary);
     border-radius: 8px;
@@ -108,7 +112,8 @@ export const ListGroup = styled.section`
     display: flex;
     flex-direction: column;
 
-    height: 70%;
+    height: 60%;
+    margin-bottom: 50px;
 
     @media (min-width: 1080px) {
         width: 90%;
@@ -125,21 +130,37 @@ export const Title = styled.h4`
 export const ListStudent = styled.ul`
     height: calc(100% - 25px);
     width: 100%;
-    border-radius: 0 0 8px 8px;
+    border-radius: 8px;
     background: var(--dark-gray);
-
+    border: 1px solid var(--dark-gray);
     overflow-y: scroll;
 
     ::-webkit-scrollbar {
         display: none;
     } 
+
+    @media (min-width: 1080px) {
+        ::-webkit-scrollbar {
+            display: unset;
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: var(--dark-gray);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: var(--light-gray);
+        }
+    }
+   
 `
 export const Card = styled.li`
     width: 100%;
     height: 80px;
     background: var(--white);
     padding-right: 20px; 
-    margin-top: 1px;
 
     display: flex;
     justify-content: space-between;
@@ -152,8 +173,7 @@ export const Card = styled.li`
     }
 
     @media (min-width: 1080px) {
-        border-right: 1px solid var(--dark-gray); 
-        border-left: 1px solid var(--dark-gray);
+        border-bottom: 1px solid var(--dark-gray); 
     }
 `
 

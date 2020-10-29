@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import illustration from '../../assets/illustration.svg'
 import { useHistory } from 'react-router-dom'
-
+import api from '../../services/api'
 import {
     Container,
     LeftSide,
@@ -17,53 +17,26 @@ const Classes = () => {
 
     const history = useHistory()
 
+    const [ subjects, setSubjects ] = useState([])
+
+    useEffect(() => {
+        api.get('/subjects').then(res => setSubjects(res.data))
+    }, [])
+
     return (
         <Container>
             <LeftSide>
                 <Title><h3>Escolha sua próxima aula.</h3></Title>
                 <ListSubject>
-                    <Subjects onClick={() => history.push('/sala-de-aula')}>
-                        <div className="sidebar"/>
-                        <div className="wrapper">
-                            <h3>Cálculo I</h3>
-                            <span>25 alunos matriculados</span>
-                        </div>
-                    </Subjects>
-                    <Subjects onClick={() => history.push('/sala-de-aula')}>
-                        <div className="sidebar"/>
-                        <div className="wrapper">
-                            <h3>Cálculo II</h3>
-                            <span>25 alunos matriculados</span>
-                        </div>
-                    </Subjects>
-                    <Subjects onClick={() => history.push('/sala-de-aula')}>
-                        <div className="sidebar"/>
-                        <div className="wrapper">
-                            <h3>Trigonometria</h3>
-                            <span>25 alunos matriculados</span>
-                        </div>
-                    </Subjects>
-                    <Subjects onClick={() => history.push('/sala-de-aula')}>
-                        <div className="sidebar"/>
-                        <div className="wrapper">
-                            <h3>Estatística</h3>
-                            <span>25 alunos matriculados</span>
-                        </div>
-                    </Subjects>
-                    <Subjects onClick={() => history.push('/sala-de-aula')}>
-                        <div className="sidebar"/>
-                        <div className="wrapper">
-                            <h3>Matemática</h3>
-                            <span>25 alunos matriculados</span>
-                        </div>
-                    </Subjects>
-                    <Subjects onClick={() => history.push('/sala-de-aula')}>
-                        <div className="sidebar"/>
-                        <div className="wrapper">
-                            <h3>Matemática Financeira</h3>
-                            <span>25 alunos matriculados</span>
-                        </div>
-                    </Subjects>
+                    {subjects.map(data => (
+                         <Subjects key={data.id} onClick={() => history.push('/sala-de-aula', { id: data.id, count: data.students.length})}>
+                            <div className="sidebar"/>
+                            <div className="wrapper">
+                                <h3>{data.name}</h3>
+                                <span>{data.students.length} alunos matriculados</span>
+                            </div>
+                        </Subjects>
+                    ))}
                 </ListSubject>
             </LeftSide>
             <RightSide>
