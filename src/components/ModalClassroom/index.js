@@ -47,7 +47,7 @@ const ModalClassroom = ({ onClose = () => {}, subjectId, count }) => {
         <Container id="modal" onClick={handleOutsideClick}>
             <Wrapper>
                 <Header>
-                    <p>{countStudents ? count - countStudents : count} de {count} alunos presentes</p>
+                    <p>{countStudents ? count - countStudents : count} de {count} alunos presentes.</p>
                     <p>Você confirma que os alunos abaixo estão ausentes hoje?</p>
                     <YesOrNo>
                         <ButtonYes onClick={() => handleReset()}>Sim</ButtonYes>
