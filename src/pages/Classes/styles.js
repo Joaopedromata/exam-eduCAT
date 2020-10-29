@@ -69,6 +69,7 @@ export const ListSubject = styled.ul`
 
         ::-webkit-scrollbar-track {
             background-color: var(--light-gray);
+            border-radius: 0 8px 8px 0;
         }
 
         width: 350px;

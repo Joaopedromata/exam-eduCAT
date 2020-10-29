@@ -23,22 +23,23 @@ const ModalClassroom = ({ onClose = () => {}, subjectId, count }) => {
 
     const [ cleanList, setCleanList ] = useState([])
 
-    useEffect(async() => {
-        await api.get(`/students/subject/${subjectId}/count`).then(res => setCountStudents(res.data.students[0].count)).catch(() => null)
+    useEffect(() => {
+        api.get(`/students/subject/${subjectId}/count`).then(res => setCountStudents(res.data.students[0].count)).catch(() => null)
     
-        await api.get(`/students/subject/${subjectId}`).then(res => { 
+        api.get(`/students/subject/${subjectId}`).then(res => { 
             setStudents(res.data.students) 
             setCleanList(res.data.students) 
         }).catch(() => null)
-    }, [])
+
+    }, [subjectId])
 
     const handleOutsideClick = e => {
         if(e.target.id === 'modal') onClose()
     }
 
     const handleReset = () => {
-        cleanList.map(data => {
-            api.post(`/students/${data.id}/reset`).then(() => history.push('/'))
+        return cleanList.map(data => {
+            return api.post(`/students/${data.id}/reset`).then(() => history.push('/'))
         })
     }
     
@@ -46,7 +47,7 @@ const ModalClassroom = ({ onClose = () => {}, subjectId, count }) => {
         <Container id="modal" onClick={handleOutsideClick}>
             <Wrapper>
                 <Header>
-                    <p>{count - countStudents} de {count} alunos presentes</p>
+                    <p>{countStudents ? count - countStudents : count} de {count} alunos presentes</p>
                     <p>Você confirma que os alunos abaixo estão ausentes hoje?</p>
                     <YesOrNo>
                         <ButtonYes onClick={() => handleReset()}>Sim</ButtonYes>

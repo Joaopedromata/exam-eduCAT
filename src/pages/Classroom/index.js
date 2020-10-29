@@ -25,11 +25,13 @@ const Classroom = ({ location }) => {
     const [ students, setStudents ] = useState([])
     const [ search, setSearch ] = useState('')
 
+    const [ teste, setTeste ] = useState(false)
+
     const completeList = () => {
-        api.get(`/students/subject/${subjectId}`).then(res => setStudents(res.data.students)).catch(() => null)
+         return api.get(`/students/subject/${subjectId}`).then(res => setStudents(res.data.students)).catch(() => null)
     }
 
-    useEffect(() => {
+    useEffect(async () => {
         completeList()
     }, [subjectId])
 
@@ -43,7 +45,7 @@ const Classroom = ({ location }) => {
         api.get(`/students/${value}/subject/${subjectId}`).then(res => setStudents(res.data.students)).catch(() => null)
     }
 
-    const isNotAbsent = async (id, isBusy) => {
+    const isNotAbsent = async (id) => {
         await api.post(`students/${id}`)
     }
 
