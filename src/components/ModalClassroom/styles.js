@@ -112,6 +112,7 @@ export const ListGroup = styled.section`
     display: flex;
     flex-direction: column;
 
+    min-width: 200px;
     height: 60%;
     margin-bottom: 50px;
 
