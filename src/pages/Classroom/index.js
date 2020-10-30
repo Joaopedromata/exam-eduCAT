@@ -25,13 +25,11 @@ const Classroom = ({ location }) => {
     const [ students, setStudents ] = useState([])
     const [ search, setSearch ] = useState('')
 
-    const [ teste, setTeste ] = useState(false)
-
     const completeList = () => {
          return api.get(`/students/subject/${subjectId}`).then(res => setStudents(res.data.students)).catch(() => null)
     }
 
-    useEffect(async () => {
+    useEffect(() => {
         completeList()
     }, [subjectId])
 

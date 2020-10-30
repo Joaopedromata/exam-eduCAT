@@ -38,8 +38,8 @@ const ModalClassroom = ({ onClose = () => {}, subjectId, count }) => {
     }
 
     const handleReset = () => {
-        return cleanList.map( data => {
-            return  api.put(`/students/${data.id}/reset`).then(() => history.push('/')).catch(err => console.log(err))
+        return cleanList.map(data => {
+            return  api.put(`/students/${data.id}/reset`).then(() => history.push('/'))
         })
     }
     
@@ -51,7 +51,7 @@ const ModalClassroom = ({ onClose = () => {}, subjectId, count }) => {
                     <p>Você confirma que os alunos abaixo estão ausentes hoje?</p>
                     <YesOrNo>
                         <ButtonYes onClick={() => handleReset()}>Sim</ButtonYes>
-                        <ButtonNo onClick={() => onClose()}>Não</ButtonNo>
+                        <ButtonNo onClick={() => onClose()} data-testid="wrapper-button">Não</ButtonNo>
                     </YesOrNo>
                 </Header>
                 <ListGroup>
