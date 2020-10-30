@@ -38,8 +38,8 @@ const ModalClassroom = ({ onClose = () => {}, subjectId, count }) => {
     }
 
     const handleReset = () => {
-        return cleanList.map(data => {
-            return api.post(`/students/${data.id}/reset`).then(() => history.push('/'))
+        return cleanList.map( data => {
+            return  api.put(`/students/${data.id}/reset`).then(() => history.push('/')).catch(err => console.log(err))
         })
     }
     

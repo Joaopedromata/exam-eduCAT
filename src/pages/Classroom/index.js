@@ -46,7 +46,7 @@ const Classroom = ({ location }) => {
     }
 
     const isNotAbsent = async (id) => {
-        await api.post(`students/${id}`)
+        await api.put(`students/${id}`)
     }
 
     return (
